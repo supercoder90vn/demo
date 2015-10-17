@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en-us" ng-app="myApp">
+    <head>
+        <title>Introduction to AngularJS</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+        <meta charset="UTF-8">
+        
+        <!-- load bootstrap and fontawesome via CDN-->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+        <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>       
+         
+        
+        <style>
+            html, body, input, select, textarea
+            {
+                font-size: 1.05em !important;
+            }
+        </style>
+        <!-- load angular via CDN-->
+        <script src="https://code.angularjs.org/1.4.6/angular.min.js"></script>
+        <!-- optional module -->
+        <script src="https://code.angularjs.org/1.4.6/angular-messages.min.js"></script>      
+        <script src="https://code.angularjs.org/1.4.6/angular-resource.min.js"></script>   
+        <!-- app-->
+        <script src="app.js"></script>
+    </head>
+    <body>
+        
+        <header>
+            <nav class="navbar navbar-default">
+            <div class="container">
+                <div>
+                    <a class="navbar-brand" href="/">jQuery</a>                    
+                </div>
+
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#"><i class="fa fa-home"></i> Home</a></li>
+                </ul>
+            </div>
+            </nav>        
+        </header>
+        
+        <div class="container">
+            
+            <div ng-controller="mainController">
+                
+                <form name="myForm">
+                    <input type="text" ng-model="field" name="myField" required minlength="5" />
+                    <div ng-messages="myForm.myField.$error"  class="alert-danger">
+                        <div ng-message="required">You did not enter a field</div>
+                        <div ng-message="minlength, maxlength">
+                            Your email must be between 5 and 100 characters long
+                        </div>
+                    </div>
+                </form>
+                
+            </div>
+            
+        </div>
+        
+    </body>
+</html>

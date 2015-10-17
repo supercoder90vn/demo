@@ -1,0 +1,35 @@
+extends layout
+
+block content
+	h1=title
+	ul.errors
+		if errors
+			each error, i in errors
+				li.alert.alert-danger #{error.msg}
+	form(method='post', action='/posts/add', enctype="multipart/form-data")
+		.form-group
+			label Title:
+			input.form-control(name='formTitle', type='text', value="#{formTitle || ''}")
+		.form-group
+			label Category
+			select.form-control(name='formCategory')
+				each category, i in categories
+					if category.title == preCategory
+						option(value='#{category.title}', selected) #{category.title}
+					else
+						option(value='#{category.title}') #{category.title}
+		.form-group
+			label Body
+			textarea.form-control(name='body', id='body') #{body}
+		.form-group
+			label Main Image:
+			input.form-control(name='mainimage', type='file')
+		.form-group
+			label Author:
+			select.form-control(name='author')
+				option(value='Brad Traversy') Brad Traversy
+				option(value='John Doe') John Doe
+		input.btn.btn-default(name='submit',type='submit',value='Save')
+		script(src='/ckeditor/ckeditor.js')
+		script
+			| CKEDITOR.replace('body');

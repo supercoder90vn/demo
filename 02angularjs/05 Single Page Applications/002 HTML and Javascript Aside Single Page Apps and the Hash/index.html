@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en-us" ng-app="myApp">
+    <head>
+        <title>Introduction to AngularJS</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+        <meta charset="UTF-8">
+        
+        <!-- load bootstrap and fontawesome via CDN-->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+        <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>       
+         
+        
+        <style>
+            html, body, input, select, textarea
+            {
+                font-size: 1.05em !important;
+            }
+        </style>
+        <!-- load angular via CDN-->
+         <!-- <script src="https://code.angularjs.org/1.4.6/angular.min.js"></script>
+        <!-- optional module -->
+         <!-- <script src="https://code.angularjs.org/1.4.6/angular-messages.min.js"></script>      
+        <script src="https://code.angularjs.org/1.4.6/angular-resource.min.js"></script>   
+        <!-- app-->
+        <script src="app.js"></script>
+    </head>
+    <body>
+        
+       <header>
+            <nav class="navbar navbar-default">
+            <div class="container">
+                <div>
+                    <a class="navbar-brand" href="/">jQuery</a>                    
+                </div>
+
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#"><i class="fa fa-home"></i> Home</a></li>
+                </ul>
+            </div>
+            </nav>        
+        </header>
+        
+        <div class="container">
+            
+           <div class="row">
+                <div class="col-md-12">
+                    <a href="#bookmark">Go to Bookmark</a>
+                    <a href="#/bookmark/2">Go to Bookmark 2</a>
+                    
+                    <p>What it looks like is a square of text links, each word linking to something relevant of the word, and some of these links have larger fonts, while some have smaller. They appear to be just randomly thrown in there.</p>
+
+                    <p>What the tag cloud actually does behind the scenes is usually for blogs. The more common tag clouds are text links to various tags the user has set up on their blog. The tags are what the creator deemed as a relevant keyword for information in a post. As each keyword is used more and more for a post, the size of the text in the tag cloud for that keyword gets larger. Clicking on any of the keywords in the tag cloud will take you to a list of all the posts which contain it as a tag. The appearance of a tag cloud is set by CSS, but the function of determining which tags are most popular is done usually by PHP. </p>
+
+                    <p>There are also some addons to various blogging software that makes the tag clouds according to categories of your posts rather than by keyword, and it works in the same way.</p>
+                    
+                    <p>What it looks like is a square of text links, each word linking to something relevant of the word, and some of these links have larger fonts, while some have smaller. They appear to be just randomly thrown in there.</p>
+
+                    <p>What the tag cloud actually does behind the scenes is usually for blogs. The more common tag clouds are text links to various tags the user has set up on their blog. The tags are what the creator deemed as a relevant keyword for information in a post. As each keyword is used more and more for a post, the size of the text in the tag cloud for that keyword gets larger. Clicking on any of the keywords in the tag cloud will take you to a list of all the posts which contain it as a tag. The appearance of a tag cloud is set by CSS, but the function of determining which tags are most popular is done usually by PHP. </p>
+
+                    <p>
+                        
+                        <a id="bookmark"><strong> This is the bookmark!</strong></a>There are also some addons to various blogging software that makes the tag clouds according to categories of your posts rather than by keyword, and it works in the same way.</p>
+               
+               
+               </div>
+            </div>
+            
+        </div>
+       
+    </body>
+</html>
