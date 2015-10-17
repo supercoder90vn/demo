@@ -1,0 +1,49 @@
+<!DOCTYPE html> 
+<!-- view-source:http://getbootstrap.com/examples/justified-nav/-->
+<html lang="en" ng-app="computer">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Computer solutions</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="style.css" rel="stylesheet">
+  <body>
+
+    <div class="container">
+
+      <!-- The justified navigation menu is meant for single line per list item.
+           Multiple lines will require custom code not provided by Bootstrap. -->
+      <div class="masthead">
+        <h3 class="text-muted">Computer Solutions</h3>
+        <nav>
+          <ul class="nav nav-justified">
+            <li><a href="#/main">Home</a></li>
+            <li><a href="#/about">About</a></li>
+            <li><a href="#/services">Services</a></li>
+            <li><a href="#/contact">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+
+     <div ng-controller="MainCtrl">
+       <div ng-view></div>
+     </div>
+
+      <!-- Site footer -->
+      <footer class="footer">
+        <p>&copy; Company 2014</p>
+      </footer>
+
+    </div> <!-- /container -->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular-route.min.js"></script>
+    <script src="script.js"></script>
+    </body>
+</html>
