@@ -1,0 +1,100 @@
+{
+  "data": {
+    "user": [
+      {
+        "name": "Brad Traversy",
+        "email": "techguyinfo@gmail.com",
+        "password": "123456",
+        "createdAt": "2015-10-06T07:44:32.026Z",
+        "updatedAt": "2015-10-06T07:44:32.026Z",
+        "id": 1
+      },
+      {
+        "name": "John Doe",
+        "email": "jdoe@gmail.com",
+        "password": "abcd",
+        "createdAt": "2015-10-06T07:45:43.664Z",
+        "updatedAt": "2015-10-06T07:45:43.664Z",
+        "id": 2
+      },
+      {
+        "name": "ho ngoc phuc",
+        "email": "hongocphuc90dn@gmail.com",
+        "password": "$2a$10$rgDEdIuOk/pi.GlE8JsGqeb3yvsoycMBELsgq43SKn0ynhg71bBge",
+        "lastLoggedIn": "2015-10-06T12:39:23.546Z",
+        "gravatarUrl": "http://www.gravatar.com/avatar/5c465a354a56673cdad27cb510e3b094?",
+        "createdAt": "2015-10-06T12:39:23.553Z",
+        "updatedAt": "2015-10-06T12:39:23.553Z",
+        "id": 3
+      },
+      {
+        "name": "ho phuc 2",
+        "email": "superboy0802@yahoo.com",
+        "password": "$2a$10$1djYMpczvtyFgKNXhS5MdOJc3lyy9.Bw8CYlbhFmPNA9LJX9Z3.vC",
+        "lastLoggedIn": "2015-10-06T12:47:34.440Z",
+        "gravatarUrl": "http://www.gravatar.com/avatar/1c920390734d61a11905e14a68fee5ef?",
+        "createdAt": "2015-10-06T12:47:34.453Z",
+        "updatedAt": "2015-10-06T12:47:34.453Z",
+        "id": 4
+      },
+      {
+        "name": "Tom Smith",
+        "email": "hongocphuc90dn2@gmail.com",
+        "password": "$2a$10$hIeCe1vnYYggJwlbo2wz/OKGGQ2b6Fs4IDZ0IXTOfoPmstEuVc7Jm",
+        "lastLoggedIn": "2015-10-06T16:32:19.237Z",
+        "gravatarUrl": "http://www.gravatar.com/avatar/9624a94d65851d6271ead1edd2f51545?",
+        "createdAt": "2015-10-06T16:32:19.237Z",
+        "updatedAt": "2015-10-06T16:32:19.238Z",
+        "id": 5
+      },
+      {
+        "name": "ho ngoc phuc",
+        "email": "hongocphuc90dn22@gmail.com",
+        "password": "$2a$10$lFJ3Jcwx1MIDhqVjbIiWuewWxt0R1WCW8bS4XpgS0Jj4wptTn3km6",
+        "lastLoggedIn": "2015-10-07T07:10:42.674Z",
+        "gravatarUrl": "http://www.gravatar.com/avatar/0dbb29eeb140747c79671f75a3965045?",
+        "createdAt": "2015-10-07T07:10:42.679Z",
+        "updatedAt": "2015-10-07T07:10:42.679Z",
+        "id": 6
+      }
+    ]
+  },
+  "schema": {
+    "user": {
+      "name": {
+        "type": "string"
+      },
+      "email": {
+        "type": "string",
+        "unique": true
+      },
+      "password": {
+        "type": "string"
+      },
+      "lastLoggedIn": {
+        "type": "date",
+        "defaultsTo": "1970-01-01T00:00:00.000Z"
+      },
+      "gravatarUrl": {
+        "type": "string"
+      },
+      "id": {
+        "type": "integer",
+        "autoIncrement": true,
+        "primaryKey": true,
+        "unique": true
+      },
+      "createdAt": {
+        "type": "datetime"
+      },
+      "updatedAt": {
+        "type": "datetime"
+      }
+    }
+  },
+  "counters": {
+    "user": {
+      "id": 6
+    }
+  }
+}
