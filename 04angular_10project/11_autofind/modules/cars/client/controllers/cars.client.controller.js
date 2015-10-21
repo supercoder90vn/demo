@@ -1,8 +1,8 @@
 'use strict';
 
 // Cars controller
-angular.module('cars').controller('CarsController', ['$scope', '$stateParams', 'UrlService', '$location', 'Authentication', 'Cars',
-	function($scope, $stateParams, UrlService, $location, Authentication, Cars) {
+angular.module('cars').controller('CarsController', ['$scope', '$stateParams', '$location', 'Authentication', 'Cars',
+	function($scope, $stateParams, $location, Authentication, Cars) {
 		$scope.authentication = Authentication;
 
 		// Create new Car
@@ -72,36 +72,36 @@ angular.module('cars').controller('CarsController', ['$scope', '$stateParams', '
 		// Find a list of Cars
 		$scope.find = function() {
 			$scope.cars = Cars.query();
+			console.log($scope.cars);
 		};
 
-		// Search List
-		$scope.search = function() {
-			var make = UrlService.getQueryStringVar('make');
-			var model =UrlService.getQueryStringVar('model');
-			var state = UrlService.getQueryStringVar('state');
-			var type = UrlService.getQueryStringVar('type');
-			var query = {};
-
-			if(make !== 0){
-				query.make = make;
-			}
-			if(model !== 0){
-				query.model = model;
-			}
-			if(state !== 0){
-				query.state = state;
-			}
-
-			query.type = type;
-
-			$scope.cars = Cars.query(query);
-		};
+		
 
 		// Find existing Car
 		$scope.findOne = function() {
 			$scope.car = Cars.get({
 				carId: $stateParams.carId
 			});
+		};
+		
+		$scope.search = function(){
+			console.log("search_____________________________");
+			
+			var query = {};
+			if($stateParams.make !=='0' ){
+				query.make = $stateParams.make;	
+			}
+			if($stateParams.model !== '0' ){
+				query.model = $stateParams.model;	
+			}
+			if($stateParams.state !== '0' ){
+				query.state = $stateParams.state;	
+			}
+			if($stateParams.type !== '0' ){
+				query.type = $stateParams.type;	
+			}			
+			console.log(query);
+			$scope.cars = Cars.query(query);
 		};
 	}
 ]);

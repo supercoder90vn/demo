@@ -19,7 +19,10 @@ UserImages = new Mongo.Collection("UserImages");
 UserImages.allow({
 	insert:function(userId,username,image){
 		return true;
-	}
+	},
+	update:function(userId,username,image){
+	return true;
+	},
 });
 Posts = new Mongo.Collection("posts");
 

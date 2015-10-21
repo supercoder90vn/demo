@@ -3,13 +3,13 @@
       <div class="row">
         <div class="col-md-6">
             <h3>Find A Car</h3>
-            <form>
-                <div class="form-group">
-                    <input type="radio" name="type" value="new"> New
-                    <input type="radio" name="type" value="used"> Used
+            <form method="get" ng-submit="search()">
+                <div class="form-group" >
+                    <input type="radio" name="type" value="new" data-ng-model="query.type"> New
+                    <input type="radio" name="type" value="used" data-ng-model="query.type"> Used
                 </div>
                 <div class="form-group">
-                    <select name="make" class="form-control">
+                    <select name="make" class="form-control" data-ng-model="query.make">
                         <option value="0">Select Make</option>
                         <option value="chevorlet">Chevorlet</option>
                         <option value="dodge">Dodge</option>
@@ -21,7 +21,7 @@
                     </select>
                 </div>
                 <div class="form-group">
-                    <select name="model" class="form-control">
+                    <select name="model" class="form-control" data-ng-model="query.model">
                         <option value="0">Select Model</option>
                         <option value="avalon">Avalon</option>
                         <option value="camry">Camry</option>
@@ -32,7 +32,7 @@
                 </div>
                 <!--http://www.freeformatter.com/usa-state-list-html-select.html-->
                 <div class="form-group">
-                    <select name="state" class="form-control">
+                    <select name="state" class="form-control" data-ng-model="query.state">
                         <option value="0">Select State</option>
                         <option value="AL">Alabama</option>
                         <option value="AK">Alaska</option>

@@ -11,7 +11,6 @@ module.exports = function (app) {
   app.route('/api/cars').all(carsPolicy.isAllowed)
     .get(cars.list)
     .post(cars.create);
-
   // Single car routes
   app.route('/api/cars/:carId').all(carsPolicy.isAllowed)
     .get(cars.read)

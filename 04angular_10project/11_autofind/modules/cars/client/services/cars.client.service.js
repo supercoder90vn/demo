@@ -12,7 +12,7 @@ angular.module('cars').factory('Cars', ['$resource',
     });
   }
 ])
-.service("UrlService", ["$location", function($location) {
+/*.service("UrlService", ["$location", function($location) {
     // refernce to service for callbacks
     var __service = this,
         parts = {
@@ -48,4 +48,5 @@ angular.module('cars').factory('Cars', ['$resource',
     };
 
 
-}]);
+}])*/
+;

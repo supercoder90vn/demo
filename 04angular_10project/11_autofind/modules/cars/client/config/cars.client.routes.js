@@ -26,7 +26,7 @@ angular.module('cars').config(['$stateProvider',
         templateUrl: 'modules/cars/client/views/view-car.client.view.html'
       })
       .state('cars.search', {
-        url: '/search',
+        url: '/search/:make/:model/:state/:type',
         templateUrl: 'modules/cars/client/views/search-car.client.view.html'
       })
       .state('cars.edit', {

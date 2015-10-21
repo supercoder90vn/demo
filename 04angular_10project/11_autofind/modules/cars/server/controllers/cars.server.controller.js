@@ -8,6 +8,8 @@ var path = require('path'),
   Car = mongoose.model('Car'),
   errorHandler = require(path.resolve('./modules/core/server/controllers/errors.server.controller'));
 
+
+
 /**
  * Create a car
  */
@@ -36,14 +38,22 @@ exports.read = function (req, res) {
 /**
  * Update a car
  */
-exports.update = function (req, res) {
-  var car = req.car;
-
+exports.update = function (req, res) {  
+ var car = req.car;// at middleware
+  // v3 use _.extend(car, req.body); => it may be more dangerous test it later
   car.title = req.body.title;
-  car.content = req.body.content;
-
+  car.type = req.body.type;
+  car.make = req.body.make;
+  car.model = req.body.model;
+  car.year = req.body.year;
+  car.price = req.body.price;
+  car.imageurl = req.body.imageurl;
+  car.state = req.body.state;
+  car.description = req.body.description;  
+  car.contact_email = req.body.contact_email;  
+  
   car.save(function (err) {
-    if (err) {
+    if (err) { 
       return res.status(400).send({
         message: errorHandler.getErrorMessage(err)
       });
@@ -74,7 +84,9 @@ exports.delete = function (req, res) {
  * List of Cars
  */
 exports.list = function (req, res) {
-  Car.find().sort('-created').populate('user', 'displayName').exec(function (err, cars) {
+  console.log("exports.list___________________________");
+  console.log(req.query);
+  Car.find(req.query).sort('-created').populate('user', 'displayName').exec(function (err, cars) {
     if (err) {
       return res.status(400).send({
         message: errorHandler.getErrorMessage(err)

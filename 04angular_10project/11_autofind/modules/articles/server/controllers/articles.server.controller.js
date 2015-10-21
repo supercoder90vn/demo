@@ -1,5 +1,15 @@
 'use strict';
-
+/******************************************************/
+// PHUC LOG
+  //console.log(":::::::::::Server::controller::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::");
+  var phCount = 0;
+  var phlog = function(message) {
+    /*phCount+=1;
+    console.log('*--------------------------------------------------------------------------------------');
+    console.log(phCount+' ____'+message);
+    console.log('--------------------------------------------------------------------------------------*');*/
+  };
+/******************************************************/
 /**
  * Module dependencies.
  */
@@ -7,12 +17,33 @@ var path = require('path'),
   mongoose = require('mongoose'),
   Article = mongoose.model('Article'),
   errorHandler = require(path.resolve('./modules/core/server/controllers/errors.server.controller'));
-
+  
+/**
+ * List of Articles
+ */
+exports.list = function (req, res) {
+  phlog("____Server::exports.list..");
+  Article.find().sort('-created').populate('user', 'displayName').exec(function (err, articles) {
+    if (err) {
+      return res.status(400).send({
+        message: errorHandler.getErrorMessage(err)
+      });
+    } else {
+      res.json(articles);
+    }
+  });
+};
+  
+  
 /**
  * Create a article
  */
 exports.create = function (req, res) {
+  phlog("____Server::exports.create..");
   var article = new Article(req.body);
+  console.log(req.body);
+  console.log("------------------");
+  console.log(req.user);
   article.user = req.user;
 
   article.save(function (err) {
@@ -25,18 +56,18 @@ exports.create = function (req, res) {
     }
   });
 };
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+//phuc: read, update, delete has param articleId, then it gets articleByID() as middleware ( route.js)
+//~~~~~~~~~~~~~
 
-/**
- * Show the current article
- */
+// 1. READ a article
 exports.read = function (req, res) {
+  phlog("____ Server::exports.read..");
   res.json(req.article);
 };
-
-/**
- * Update a article
- */
+// 2. UPDATE a article
 exports.update = function (req, res) {
+  phlog("____Server::exports.update..");
   var article = req.article;
 
   article.title = req.body.title;
@@ -52,11 +83,9 @@ exports.update = function (req, res) {
     }
   });
 };
-
-/**
- * Delete an article
- */
+// 3. UPDATE a article
 exports.delete = function (req, res) {
+  phlog("____Server::exports.delete..");
   var article = req.article;
 
   article.remove(function (err) {
@@ -70,26 +99,13 @@ exports.delete = function (req, res) {
   });
 };
 
-/**
- * List of Articles
- */
-exports.list = function (req, res) {
-  Article.find().sort('-created').populate('user', 'displayName').exec(function (err, articles) {
-    if (err) {
-      return res.status(400).send({
-        message: errorHandler.getErrorMessage(err)
-      });
-    } else {
-      res.json(articles);
-    }
-  });
-};
+
 
 /**
  * Article middleware
  */
 exports.articleByID = function (req, res, next, id) {
-
+  phlog("<middleware> ___Server::exports.articleByID... ");
   if (!mongoose.Types.ObjectId.isValid(id)) {
     return res.status(400).send({
       message: 'Article is invalid'
