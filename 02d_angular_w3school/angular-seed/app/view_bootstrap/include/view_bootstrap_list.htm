@@ -1,0 +1,17 @@
+<h4>Users</h4>
+< table class="table <note>table-striped"</note> >
+<table class="table table-striped">
+	<thead><tr><th>Edit</th><th>First Name</th><th>Last Name</th></tr></thead>
+	<tbody>
+		<br><div>< span class="glyphicon <note>glyphicon-pencil</note>">< /span>& nbsp; & nbsp;Edit</div>			
+		<tr ng-repeat="user in users">
+			<td>
+				<button class="btn" ng-click="editUser(user.id)">
+					<span class="glyphicon glyphicon-pencil"></span>&nbsp;&nbsp;Edit
+				</button>					
+			</td>
+			<td>{{ user.fName }}</td>
+			<td>{{ user.lName }}</td>
+		</tr>
+	</tbody>
+</table>

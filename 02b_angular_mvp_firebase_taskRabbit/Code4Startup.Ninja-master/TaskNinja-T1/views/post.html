@@ -1,0 +1,36 @@
+<div class="container">
+	<!--PHUC ( ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+    <div class="lesson">
+    	<index>1.</index>$location
+    	<div class="script">
+    		app.controller('TaskController', function(<note> $location</note>) {
+			<br><tab>$scope.postTask = function(task) {
+			<br><tab><tab>$scope.tasks.<note>$add</note>(task);
+			<br><tab><tab>// for Update: $scope.tasks.<note>$save</note>(task);
+			<br><tab><tab><note>$location</note>.path('/');
+			<br><tab>};
+			<br>}
+		</div>
+    	<index>2</index>
+    	<div class="html">
+    		< form <note>ng-submit</note>="postTask(<note>task</note>)"> 	
+    		<br><tab>< input <note>type="number"</note> ng-model="task.total".../>
+    	</div>
+    	question:  model 'task' is initilized at ng-submit ???
+        
+    </div>
+    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ )PHUC -->
+	<div class="row title">
+		<div class="col-md-6 col-md-offset-3">
+             
+			<form ng-submit="postTask(task)">              
+		      <input type="text" ng-model="task.title" class="form-control" placeholder="Task title" required><br>             
+		      <textarea ng-model="task.description" class="form-control" placeholder="Describe what you need done" required></textarea><br>
+		      <input type="number" ng-model="task.total" class="form-control" placeholder="How much will you pay?" required><br>
+		      <input type="submit" value="Post" class="btn btn-warning">
+		    </form>
+
+		</div>
+	</div>	
+</div>

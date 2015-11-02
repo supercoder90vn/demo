@@ -1,0 +1,90 @@
+index_ph.html
+<div class="lesson" >
+    <div class="script">
+        var app = angular
+
+          .module('xxxApp', [
+            <note>'ngAnimate'/*????*/</note>,
+            'ngResource',
+            'ngRoute',    
+            'firebase',
+            'toaster'
+          ])
+          <br>.constant('FURL', <note>'https://task-ninja.firebaseio.com/'</note>,)
+    </div>
+</div>
+<div class="lesson" >
+    <index>1. </index> script
+    <div class="phcontainer">
+
+        <index>???. </index> 
+        <div class="html">
+           <br>*< .script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.8/angular-animate.js">< /script>
+           <br> < .script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.8/angular-resource.js">< /script>
+            <br>< .script src="https://cdnjs.cloudflare.com/ajax/libs/angular-moment/0.9.0/angular-moment.js">< /script>
+            <br>*< .link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/0.2.1/css/material.css" />
+            <br> < .link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/0.2.1/css/ripples.css" />
+
+            <br> < .script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/0.2.1/js/material.js">< /script>
+            <br>< .script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/0.2.1/js/ripples.js">< /script>
+        </div>
+    </div>         
+</div>
+<div class="lesson">  
+    <index>2.a </index> $firebase
+    <div class="phcontainer">
+        <div class="script">
+            app.controller('TaskController', function(<note> $firebase, FURL</note>...) {
+           <br><tab>var ref = new Firebase(FURL);
+           <br><tab>$scope.<note>tasks</note> = $firebase(ref.child(<note>'tasks'</note>)).<note>$asArray()</note> ; 
+            <br>}
+        </div>
+				get.$asObject();  $add(task);$save(task);
+        <div class="script">
+            function getTask(taskId) {
+                return $firebase(ref.child(<note>'tasks'</note>).child(taskId)).<note>$asObject()</note>;
+            };            
+            <br>$scope.tasks.<note>$save(task)</note>; <warn>??? fail</warn>
+					<br>task.datetime = Firebase<note>.ServerValue.TIMESTAMP</note>; $scope.tasks.<note>$add(task)</note>;            
+        </div>  
+        <div class="html">
+            < .script src="https://cdn.firebase.com/js/client/2.1.0/firebase.js" >< /script>
+            <br>< .script src="https://cdn.firebase.com/libs/angularfire/0.9.1/angularfire.min.js">< /script>  
+        </div>
+    </div>
+    <index>2.b </index> $firebaseAuth  
+    <div class="phcontainer">    
+        <br>https://www.firebase.com/docs/web/libraries/angular/quickstart.html
+        <note><br>services/auth.js</note>
+        <div class="script">            
+            app.factory('Auth', function(FURL, $firebaseAuth, $firebase) {}
+        </div>   
+        <div class="script">                 
+             Auth.register(user).then(function() {}, function(err) {});   
+             <br>Auth.login(user).then(function() {}, function(err) {});   
+             <br>Auth.changePassword(user).then(function() {}, function(err) {});   
+             <br>Auth.logout(); 
+        </div>        
+    </div>
+</div>
+
+
+<div class="lesson">      
+    <index>3. </index> angularjs-toaster    
+    <div class="script">
+        app.controller('xxxController', function(...,toaster) {
+        <div class="phcontainer">
+            toaster.pop('success', "Registered successfully");   
+            <br>toaster.pop('success', "Password changed successfully");
+            <br>toaster.pop('success', "Logged in successfully");
+            <br>toaster.pop('success', "Logged out successfully");
+            <br>toaster.pop('error', "Oops! Something went wrong.");  
+        </div>
+        }          
+    </div>  
+     <div class="html">
+        < link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/angularjs-toaster/0.4.9/toaster.css" />
+        <br>< .script src="http://cdnjs.cloudflare.com/ajax/libs/angularjs-toaster/0.4.9/toaster.js">< /script>
+        <br> < toaster-container toaster-options="{'time-out': 3000, 'close-button':true}">< /toaster-container>
+    </div>       
+</div>

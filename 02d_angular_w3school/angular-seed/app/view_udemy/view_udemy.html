@@ -1,0 +1,188 @@
+<small>	
+	<p>Guide: 
+	<p> 1> bower install angular-messages. Add < script src="/bower_components/angular-messages/angular-messages.js">< /script>	 
+</small>
+<h3>XI. ng-message</h3>
+<small><em>**replace for: view2. VIII.Validation: novalidate, $invalid, $valid, $pristine, $dirty, $error)</em></small>
+<div>
+	<h5><index>1.</index>ng-message="required"</h5>
+	< input required/>
+	<h5><index>2.</index>ng-message="minlength, maxlength"</h5>
+	< input minlength="5" />
+	<form name="myForm">
+		<input type="text" ng-model="field" name="myField" required minlength="5" />
+		<div ng-messages="myForm.myField.$error" class="alert-danger">
+			<div ng-message="required">You did not enter a field</div>
+			<div ng-message="minlength, maxlength">
+				Your email must be between 5 and 100 characters long
+			</div>
+		</div>
+	</form>
+</div>
+
+<h3>XII.  $timeout,  $watch, $scope.$apply</h3>
+1> look at console to see <note>$watch</note>(oldValue, newValue) 2> <note>$scope.$apply</note> use in case of setTimeOut of javascript to make $watch working (should use <note>$timeout</note> of angular for shorter)
+<div ng-init="init_XII()">
+	<button ng-click="set_timeout()"> set timeout</button> result: {{ name_timeout }} 
+</div>
+
+<h3>XIII. $filter</h3>
+<div ng-init="init_XIII()">
+	$filter('lowercase')('PHUC') = {{up_to_low}}
+	<br>	$filter('filter')(result, function(d){ return d.ID == 3;}) = {{filteredData}}
+</div>
+
+<h3>XIV. ng-class</h3>
+<div ng-init="init_XIV()"> 
+	<h5><index>1.</index>ng-class</h5>
+	<note>ng-class</note>="{ 'class01':text.length> 5, 'class02':text.length< 5 }"
+	<div>		
+		should have {{characters}} characters: <input type="text" ng-model="charText"/>
+	</div> 
+	
+	<div class="alert" ng-class="{ 'alert-warning':charText.length < characters, 'alert-danger':charText.length > characters }" ng-show="charText.length !== characters">
+		<div ng-show="charText.length < characters">
+			You have less than {{characters}} characters!
+		</div>
+		<div ng-show="charText.length > characters">
+			You have more than {{characters}} characters!
+		</div>		
+	</div>	
+	<!--<h4>Rules</h4>
+	<ul>
+		<li ng-repeat="rule in rules">
+			{{ rule.rulename }}
+		</li>
+	</ul>
+	
+	Add rule: <input type="text" ng-model="newRule"/> <a href="#" class="btn btn-default" ng-click="addRule()">Add</a>-->
+</div>
+<h3>XV. custom service</h3>
+<div ng-init="init_XV()">
+	 $scope.serviceCustom = ServiceCustom 
+	 <div> 
+		 { {serviceCustom.name} } =  '{{serviceCustom.name}}'
+		 <br>{ {serviceCustom.namelength()} } =  {{serviceCustom.namelength()}}
+	</div>
+</div>
+
+<h3>XVI. $routeParams </h3>
+<div ng-init="init_XVI()">
+	 $scope.routeParams = $routeParams;
+	 <div> 
+		 { {serviceCustom.routeParams} } =  '{{routeParams}}'
+	</div>
+</div>
+<h3>XVII. custom directive </h3>
+<div ng-init="init_XVII()">
+	<h5><index>1.</index>template</h5>
+	<div>
+		<index>a.</index> < my-directive>< /my-directive>
+		<div><my-directive></my-directive></div>
+		<br><index>b. </index>< div my-directive>< /div>
+		<div><div my-directive></div> </div>
+		<index>c. </index>< div class='my-directive'>< /div>
+		<div><div class='my-directive'></div></div>
+		<index>d. </index>< !--directive:my-directive<note> </note>-->
+		<div><!--directive:my-directive --></div>
+	</div>	
+	
+	<h5><index>2.</index>templateUrl</h5>
+	<div>
+		<br><my-directive-with-url></my-directive-with-url>
+	</div>
+	
+	<h5><index>3.</index>scope, compile, link</h5>
+	<div>
+		<index>a.</index> @ 
+		<br> primitive value
+		<div>
+			<br>Javascript =><note> scope:</note>{personName: "@", personAddress: "@"}
+			<br> myDirective_scope html => < my-directive-with-scope person-name="<note>{{ </note>person.name<note> }}</note>" person-address="<note>{{ </note>person.address<note> }}</note>">< /my-directive-with-scope>
+			<br> output:
+			<my-directive-with-scope person-name="{{ person.name }}" person-address="{{ person.address }}"></my-directive-with-scope>
+		</div>
+		<index>b.</index> =,&
+		<br> object, method
+		<div>
+			<br>Javascript =><note> scope:</note>{personObject: "=", getFullName: "&"}
+			<br> html => < my-directive-with-scope person-object="person02" person-address="getFullName(aPerson)">< /my-directive-with-scope>
+			<br> output:
+			<div>
+				<my-directive-with-scope02 person-object ="person02" get-full-name ="getFullName(aPerson)"></my-directive-with-scope02>
+			</div>
+		</div>
+		<index>c.</index> ng-repeat, compile, link
+		<br><em>( look at directive 2, name was changed at compile)
+		<br>( delete compile at directive code to able to use link, then look at directive 3, name was changed at link)
+		<br>(link is better option than compile)
+		</em>
+		<div>
+			Option 1(shorter): < my-directive-with-scope02 person-object ="person" get-full-name ="getFullName(aPerson)" <note>ng-repeat</note>="person in people">< /my-directive-with-scope02>
+			<br>Option 2: < div class="list-group" <note>ng-repeat</note>="person in people"> < my-directive-with-scope02 person-object ="person" get-full-name ="getFullName(aPerson)">< /my-directive-with-scope02> < /div>
+			<div>
+				<my-directive-with-scope02 person-object ="person" get-full-name ="getFullName(aPerson)" ng-repeat="person in people"></my-directive-with-scope02>
+			</div>
+		</div>
+	</div>
+</div>
+
+<h3>XVIII. nestController, controller-replace-scope</h3>
+<div>
+	<h5><index>1.</index>$parent for nestController</h5>
+	<div>
+		< div ng-controller="parent1Controller"  >
+		<div ng-controller="parent1Controller"  >	            
+			<fix>{ { message } }  = </fix> {{ message }}
+			<br>< div ng-controller="child1Controller"  >
+			<div ng-controller ="child1Controller">
+				<fix>{ {<note> $parent</note>.message } } = </fix>{{ $parent.message }} <!-- or Create object parent1vm {message:'...'}-->
+				<br/> <fix>{ { message } } = </fix>{{ message }}
+			</div>
+		</div>
+	</div>
+	<h5><index>2.</index>controller-replace-scope</h5>
+	<div class="lesson"><note>.controller('parent2Controller', [ function(){ <note>this.</note>message = 'Parent 2 Message!';}])	 </note></div> 
+	<div>
+		<div class="lesson">
+			< div ng-controller="parent2Controller <note> as parent2vm</note>" >
+		</div>  
+		<div ng-controller="parent2Controller as parent2vm" >            
+			{ { <note>parent2vm</note>}.message  }  =  {{ parent2vm.message }}
+			<div class="lesson">< div ng-controller ="child2Controller<note>  as   child2vm" </note>></div>
+			<div ng-controller ="child2Controller as child2vm" style="padding-left:20px">
+				{ { <note>parent2vm</note>.message } } = {{ parent2vm.message }}
+				<br/>{ { <note>child2vm</note>.message } } = {{ child2vm.message }}
+				<div class="lesson">< input type="text" ng-model="<note>parent2vm.</note>message"/></div>
+				<br/><input type="text" ng-model="parent2vm.message"/>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+
+
+
+<hr><hr>
+**
+<em>I.research more:
+<div>
+	$digest, ng-switch,ng-cloak>
+	<br>$http.post problem(video 04-05)
+	
+	
+</div>
+II. others:(video 05-02)
+<br>1. bookmark
+<br>2.javascript:
+window.addEventListener('hashchange',function(){
+    <div>console.log('Hash changed!: ' + window.location.hash);</div>
+    <div>if( window.location.hash === '#/view_udemy'){</div>
+   <div>    <div>  console.log('window.location.hash === "'"#/view_udemy"l');</div></div>
+    <div>}</div>
+});
+</em>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html lang="en" ng-app="phApp" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html lang="en" ng-app="phApp" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html lang="en" ng-app="phApp" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="en" ng-app="phApp" class="no-js"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>My AngularJS App</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/normalize.css">
+  <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/main.css">
+  <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">  
+  <script src="bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
+  <link rel="stylesheet" href="app.css">
+</head>
+<body>
+  <div class="topHeader"> Angular.js All in One</div>
+  
+  <p> <note>$rootScope</note>
+  <ul class="menu">
+    <li><a href="#/view1" class={{view==='view1'?'active':''}}>view1</a></li>
+    <li><a href="#/view2" class={{view==='view2'?'active':''}}>view2</a></li>
+    <li><a href="#/view_bootstrap" class={{view==='view_bootstrap'?'active':''}}>view_bootstrap</a></li>
+    <!-- test $routeParams here-->
+    <li><a href="#/view_udemy/view04?para1=admin_phuc&para2=testPara" class={{view==='view_udemy'?'active':''}}>view_udemy</a>
+    </li>
+    <li><a href="#/view_taskrabbit" class={{view==='view_taskrabbit'?'active':''}}>view_taskrabbit</a></li>
+  </ul>
+
+  <!--[if lt IE 7]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+  <![endif]-->
+  python -m SimpleHTTPServer 8000
+  < div <note>ng-view</note>>< /div>
+  
+  <div ng-view></div>
+
+  <!-- --------------------------------------------------------------------------------------------- -->
+  <hr>
+    <p>    
+    <small style="color:grey">
+    &copy; 2016 
+    <br>Author: Ho Ngoc Phuc
+    <br>Email: hongocphuc90dn@gmail.com
+    <br>Reference: 
+    <br> 1. w3schools.com
+    <br> 2. https://docs.angularjs.org/api
+    <!--
+      http://stackoverflow.com/questions/8988855/include-another-html-file-in-a-html-file
+      http://getbootstrap.com/getting-started/		
+    -->		
+    </small>
+  <!-- In production use:
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
+  -->
+  <script src="bower_components/angular/angular.js"></script>
+  <script src="bower_components/angular-route/angular-route.js"></script>
+  <script src="bower_components/angular-messages/angular-messages.js"></script>
+  <script src="app.js"></script>
+  <script src="view1/view1.js"></script>
+  <script src="view2/view2.js"></script>
+  <script src="view_bootstrap/view_bootstrap.js"></script>
+  <script src="view_udemy/service_custom.js"></script>  
+  <script src="view_udemy/view_udemy.js"></script>
+  <script src="view_taskrabbit/view_taskrabbit.js"></script>
+  
+  
+  <script src="components/version/version.js"></script>
+  <script src="components/version/version-directive.js"></script>
+  <script src="components/version/interpolate-filter.js"></script>
+</body>
+</html>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+<script src="app.js"></script>
+<head>
+	<link href="style.css" rel="stylesheet">
+</head>
+<body>
+	setup: 1> download angular-seed. 2> npm install. 3> npm start to test at locahost:8000 
+	($http cannot read "file://", so use localhost to test at https)
+	<hr>
+	<div ng-app="myApp" ng-controller="myCtrl" ng-init="arr=[1,8,3,'text1','text2',6,100,101]; person={firstName:'Ho',lastName:'Phuc'};person.age = 18">
+		<div >
+			<h2>I. ng-model, { {AngularJS Expressions } }, ng-bind, ng-init</h2>
+			<div>
+				<h3><index>1.a</index> ng-model </h3>
+				<div>
+					<p><input type="fix" ng-model="name" placeholder="Enter first name here">
+					<input type="fix" ng-model="lastName" placeholder="Enter last name here">
+				</div>
+				<h3><index>2.a.</index>  AngularJS Expressions</h3>
+				<div>					 
+					<p><fix>{ {name} } =   </fix> {{name}}
+					<p> <fix>{ {firstName + " " + lastName} } =  </fix> {{name + " " + lastName}}
+					<p> <fix>{ { 5 + 5 } } </fix>=  {{ 5 + 5 }} ; <fix> { { 5 * 5 } } =  </fix>  {{ 5 * 5 }}
+				</div>				
+				<h3><index>2.b.</index>  ng-bind</h3>
+				<div>										
+					<p> <fix> < span ng-bind="name"/ > :  </fix> <span ng-bind="name"/>
+					<p> <fix> < span ng-bind="name + ' ' + lastName"/ > </fix> <span ng-bind="name + ' ' + lastName"/>
+				</div>
+				<h3><index>3</index>  ng-init</h3>
+				<div>										
+					<p> 'person' object from ng-init is {{ person.firstName+ ' ' + person.lastName  }} with age = {{person.age}}</p>
+				</div>		
+				<h3><index>4</index>  ng-repeat</h3>
+				<div ng-init="init_I_4()">
+					person: <ul><li ng-repeat="x in person">{{ x }}	</li></ul>
+					<note>error if there is repeat of parameter such as: arr=[1,3,3]</note>
+					<p>arr: <span ng-repeat="x in arr">{{ x }} ;</span>
+					<p><note>fix by adding "track by $index" (ng-repeat="x in jsArr track by $index") </note>
+					<p>jsArr: <span ng-repeat="x in jsArr track by $index" >{{ x }} ;</span>
+				</div>		
+			</div>
+		</div>
+		<div>
+			<h2>II. $scope </h2>			
+			<div ng-init="init_II()">
+				<note> $scope.jsObject at script   === ng-model at html </note>
+				<p>
+				<input type="fix" ng-model="jsFirstName">
+				<input type="fix" ng-model="jsLastName">
+				<p>{ {jsFirstName + " " + jsLastName} } = {{jsFirstName + " " + jsLastName}}
+			</div>
+		</div>
+		<div>
+			<h2>III. Filters </h2>			
+			<div ng-init="init_II()">
+				<p><index>1.a</index>uppercase
+				<div>
+					<p>{ { 'phuc' | uppercase} } = {{ 'phuc' | uppercase}}
+				</div>
+				<p><index>1.b</index>lowercase
+				<div> 
+					<p>{ { 'PHUC' | lowercase} } =  {{ 'PHUC' | lowercase}}
+				</div>
+				<p><index>2</index>currency
+				<div>  
+					<p>{ { 20000 | currency } } =  {{ 20000 | currency}}
+				</div>
+				<p><index>3</index>orderBy	
+				<div ng-init="init_III_3()">
+					<p>ng-repeat="x in jsNames | orderBy:'country'"
+					<ul>
+						<li ng-repeat="x in jsNames | orderBy:'country'">{{ x.name + ', ' + x.country }}</li>
+					</ul>
+				</div>
+				<p><index>4</index>filter	
+				<div>
+					<note>filter the fields of name object</note>
+					<p> ng-repeat="x in jsNames | filter:test"
+					<p>test:<input type="text" ng-model="test"></p>					
+					<ul>
+					<li ng-repeat="x in jsNames | filter:test | orderBy:'country'">
+						{{ (x.name | uppercase) + ', ' + x.country}}
+					</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div>
+			<h2>IV. $http </h2>			
+			$http.get("http://www.w3schools.com/angular/customers.php")
+				<p>.success(function(response) {
+					<p>$scope.jsJsonData = response.records;
+				<p>})
+			<div ng-init="init_IV()">
+				<ul><li ng-repeat="x in jsJsonData">{{ x.Name + ', ' + x.Country }}</li></ul>
+			</div>
+		</div>
+		<!-- --------------------------------------------------------------------------------------------- -->
+		<p>
+		<hr>		
+		<small style="color:grey">
+		&copy; 2016 
+		<br>Author: Ho Ngoc Phuc
+		<br>Email: hongocphuc90dn@gmail.com
+		<br>Reference: w3schools.com
+		<!--
+			http://stackoverflow.com/questions/8988855/include-another-html-file-in-a-html-file
+			http://getbootstrap.com/getting-started/		
+		-->		
+		</small>
+		<hr>
+	</div>	
+</body>
+</html>

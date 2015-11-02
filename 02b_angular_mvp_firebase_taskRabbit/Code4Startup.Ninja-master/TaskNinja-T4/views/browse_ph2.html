@@ -1,0 +1,13 @@
+<div class="phborder" ng-if="task.title==='a difficult task'">
+	views/browse.html
+	<div class="lesson">
+		<index>2.</index>
+			<div class="html">
+					<br>< h4 { { task.title | <note> limitTo:25</note> } } { { task.title.length > 25?<note> "..."</note> : <note> ""</note> } } < /h4>
+			</div>
+		
+			<div class="html">< span <note> am-time-ago</note>="task.datetime">< /span></div>
+			<br><phtemp>{{task}}</phtemp>
+	</div>
+	
+</div>

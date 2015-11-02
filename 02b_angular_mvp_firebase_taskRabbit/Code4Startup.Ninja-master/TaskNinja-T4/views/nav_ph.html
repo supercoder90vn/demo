@@ -1,0 +1,37 @@
+<!--PHUC ( ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+views/nav_ph.html
+<div class="lesson phcontainer" >
+  <path>index.html</path>
+  <div class="html">
+    < div ng-include="'views/<light>nav.html</light>'">< /div>     
+  </div>
+  <div class="phcontainer">
+    <path>view/<light>nav.html</light>'</path>
+    <div class="html">
+      < nav ng-controller="<light>NavController</light>">...
+      <div class="phcontainer">
+          < div ng-show="signedIn()" ng-include="'views/partials/<light>changepass.html</light>'">< /div>
+          <br>< div ng-show="signedIn()" ng-include="'views/partials/<light>post.html</light>'">< /div>
+      </div>
+      < /nav> 
+    </div>
+    <div class="phcontainer">
+       <br><path> controllers.nav.js</path>
+        <div class="script">
+          app.controller('NavController', function(..., Auth) {
+          <div class="phcontainer">
+            $scope.currentUser = Auth.user;
+            <br>$scope.signedIn = Auth.signedIn;
+            <br>//comment: shorter => $scope.auth = Auth
+          </div>
+          });
+      </div>
+    </div>
+  </div>
+  
+</div>
+<div class="row">
+  <span style="float:right; margin-right:100px">hongocphuc90dn@gmail.com Test123!  </span>
+</div>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ )PHUC -->

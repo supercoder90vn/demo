@@ -1,0 +1,137 @@
+<small>setup: 1> download angular-seed. 2> npm install. 3> npm start to test at locahost:8000 
+<br>($http cannot read "file://", so use localhost to test at https)
+<br>(can use <note>Brackets</note> if not test $http)
+</small>
+<hr>
+<div ng-init="arr=[1,8,3,'text1','text2',6,100,101]; person={firstName:'Ho',lastName:'Phuc'};person.age = 18">	
+	<div >
+		<h3>I. ng-model, { {AngularJS Expressions } }, ng-bind, ng-init</h3>
+		<div>
+			<h5><index>1.a</index> ng-model </h5>
+			<div>
+				<p><input type="fix" ng-model="name" placeholder="Enter first name here">
+				<input type="fix" ng-model="lastName" placeholder="Enter last name here">
+			</div>
+			<h5><index>2.a.</index>  AngularJS Expressions</h5>
+			<div>					 
+				<p><fix>{ {name} } =   </fix> {{name}}
+				<p> <fix>{ {firstName + " " + lastName} } =  </fix> {{name + " " + lastName}}
+				<p> <fix>{ { 5 + 5 } } </fix>=  {{ 5 + 5 }} ; <fix> { { 5 * 5 } } =  </fix>  {{ 5 * 5 }}
+			</div>				
+			<h5><index>2.b.</index>  ng-bind</h5>
+			<div>										
+				<p> <fix> < span ng-bind="name"/ > :  </fix> <span ng-bind="name"/>
+				<p> <fix> < span ng-bind="name + ' ' + lastName"/ > </fix> <span ng-bind="name + ' ' + lastName"/>
+			</div>
+			<h5><index>3.</index>  ng-init</h5>
+			<div>										
+				<p> 'person' object from ng-init is {{ person.firstName+ ' ' + person.lastName  }} with age = {{person.age}}</p>
+			</div>		
+			<h5><index>4.</index>  ng-repeat</h5>
+			<div ng-init="init_I_4()">
+				person: <ul><li ng-repeat="x in person">{{ x }}	</li></ul>
+				<note>error if there is repeat of parameter such as: arr=[1,3,3]</note>
+				<p>arr: <span ng-repeat="x in arr">{{ x }} ;</span>
+				<p><note>fix by adding "track by $index" (ng-repeat="x in jsArr track by $index") </note>
+				<p>jsArr: <span ng-repeat="x in jsArr track by $index" >{{ x }} ;</span>
+			</div>		
+		</div>
+	</div>
+	<div>
+		<h3>II. $scope </h3>			
+		<div ng-init="init_II()">
+			<note> $scope.jsObject at script   === ng-model at html </note>
+			<p>
+			<input type="fix" ng-model="jsFirstName">
+			<input type="fix" ng-model="jsLastName">
+			<p>{ {jsFirstName + " " + jsLastName} } = {{jsFirstName + " " + jsLastName}}
+		</div>
+	</div>
+	<div>
+		<h3>III. Filters </h3>			
+		<div ng-init="init_II()">
+			<h5><index>1.a</index>uppercase</h5>
+			<div>
+				<p>{ { 'phuc' | uppercase} } = {{ 'phuc' | uppercase}}
+			</div>
+			<h5><index>1.b</index>lowercase</h5>
+			<div> 
+				<p>{ { 'PHUC' | lowercase} } =  {{ 'PHUC' | lowercase}}
+			</div>
+			<h5><index>2.</index>currency</h5>
+			<div>  
+				<p>{ { 20000 | currency } } =  {{ 20000 | currency}}
+			</div>
+			<h5><index>3.</index>orderBy, filter	</h5>
+			<div ng-init="init_III_3()">
+				<note>filter the fields of name object</note>
+				<p> ng-repeat="x in jsNames | filter:test" | orderBy:'country'"
+				<p>test:<input type="text" ng-model="test"></p>					
+				<ul><li ng-repeat="x in jsNames | filter:test | orderBy:'country'">	{{ (x.name | uppercase) + ', ' + x.country}} </li></ul>
+			</div>
+		</div>
+	</div>
+	<div ng-init="init_IV()">
+		<h3>IV. $http, ng-if, $even, $odd </h3>
+		<div>
+			<h5><index>1. </index>	$http</h5>		
+			<p>
+			<fix>
+				$http.get("http://www.w3schools.com/angular/customers.php")
+				<br>.success(function(response) {
+				<br>$scope.jsJsonData = response.records;
+				<br>})
+			</fix>
+			<h5><index>2. </index> Table style use 2.a. CSS or 2.b. ng-if, $even, $odd	</h5>
+			
+			<h5><index>2.a </index>css</h5>
+			<table>
+			<tr ng-repeat="x in jsJsonData">
+				<td>{{ x.Name }}</td>
+				<td>{{ x.Country | uppercase }}</td>
+			</tr>
+			</table>
+			<p>
+			<h5><index>2.b </index>ng-if, $even, $odd</h5>
+			<note>ng-if</note> add or remove element while <note>ng-show</note> show or hide element 
+			<table>
+			<tr ng-repeat="x in jsJsonData">
+			<td ng-if="$odd" style="background-color:yellow">{{ x.Name }}</td>
+			<td ng-if="$even"style="background-color:pink">{{ x.Name }}</td>
+			<td ng-if="$odd" style="background-color:yellow">{{ x.Country }}</td>
+			<td ng-if="$even"style="background-color:pink">{{ x.Country }}</td>
+			</tr>
+			</table>
+		</div>
+	</div>
+	<div ng-init="mySwitch=true">
+		<h3>V. ng-disabled, ng-show, ng-hide </h3>	
+		<div>
+			<h5><index>1.</index>ng-disabled</h5>
+			<div>ng-disabled={{ mySwitch }}</div>
+			<input type="checkbox" ng-model="mySwitch"/> <button ng-disabled="mySwitch">Click Me!</button>		
+			<h5><index>2.a</index>ng-show</h5>
+			<div>
+				<p>ng-show="true" => <span ng-show="true"> I am visible.</span>
+				<p>ng-show="false" => <span ng-show="false"> I am not visible.</span>
+				<p>ng-show="12 > 10" => <span ng-show="12 > 10"> I am visible.</span>
+				<p>ng-show="12 < 10" => <span ng-show="12 < 10"> I am invisible.</span>
+			</div>
+			<h5><index>2.b</index>ng-hide</h5>
+			<div>
+				<p>ng-hide="true" => <span ng-hide="true"> I  hide.</span>
+				<p>ng-hide="false" => <span ng-hide="false"> I does not hide.</span>
+			</div>
+		</div>
+	</div>
+	
+	
+</div>	
+
+
+<hr>
+**
+<em>
+I. others: 
+<br><note>arguments</note> is array of inputs of function
+</em>

@@ -1,0 +1,131 @@
+<div>	
+	<div>
+		<h3>VI. AngularJS Event</h3>		
+		<div>
+			<h5><index>1.</index>ng-click,  ng-dbl-click</h5>
+			<div ng-init="count=0">	
+				<button ng-click="count = count + 1">Click me!</button><fix> count =</fix> {{ count }}
+			</div>
+		</div>
+		<div>
+			<h5><index>2.</index>ng-mousedown, ng-mouseenter, ng-mouseleave, ng-mousemove</h5>
+			<h5><index>3.</index>ng-keydown, ng-keyup, ng-keypress</h5>
+			<h5><index>4.</index>ng-change (=== $watch at js)</h5>
+		</div>
+		
+	</div>	
+	<div>
+		<h3>VII. Angular Global API</h3>		
+		<div ng-init="init_VII()">
+			<div>
+				<h5><index>1.</index> Converting</h3>
+				<div>
+					<h5><index>a.</index> angular.forEach(array, callback)</h3>
+					<div>
+						Example:
+						<lesson>
+							var count = 0;
+							<note>angular.forEach</note>($scope.todos, function(todo) {
+							count += todo.done ? 0 : 1;
+							});
+						</lesson>
+					</div>
+				</div>
+				<div>
+					
+					<h5><index>b.</index> angular.copy</h3>
+					<form>
+						<button ng-click="reset()">RESET</button>
+						<input type="text" ng-model="user.firstName" placeholder="firstname">
+						<input type="text" ng-model="user.lastName" placeholder="lastname">				
+					</form>
+				
+					<table>				
+						<tr><td><fix>{ {user} } </fix></td><td>= {{user}}</td></tr>
+						<tr><td><fix>{ {master} }</fix></td><td>= {{master}}</td></tr>
+					</table>
+				</div>
+				<div>
+					<h5><index>c.</index>lowercase(x), uppercase(x)</h5>	
+					<div>
+						<p>angular.lowercase({{up_to_low_1}}) = {{up_to_low_2}}
+						<p>angular.uppercase({{low_to_up_1}}) = {{low_to_up_2}}					
+					</div>
+				</div>	
+								
+			</div>
+				
+			<div>
+				<h5><index>2.</index>Comparing</h5>	
+				<div>					
+					<h5><index>a.</index>isFunction(x),isObject(x), isArray(x), </h5>
+					<h5><index>b.</index>isString(x), isNumber(x),isDate(x)</h5>
+					<div>
+						<p>angular.isString({{string_or_number}}) = {{isString}}
+						<p>angular.isNumber({{string_or_number}}) = {{isNumber}}
+					</div>
+					<h5><index>c.</index>isElement(x),equals(x)</h5>
+					<h5><index>d.</index>isDefined(x),isUndefined(x)</h5>					
+				</div>				
+			</div>	
+			<div>
+				<h5><index>3.</index>JSON</h5>	
+				<div>					
+					<h5><index>a.</index>fromJSON(),toJSON() </h5>
+					 $scope.fromJson=angular.fromJson(jsonString) : {{fromJson}}					 
+					<p>$scope.stringFromObject= angular.toJson(object2)	: {{stringFromObject}}	
+				</div>				
+			</div>		
+			<div>
+				<h5><index>4.</index>Basic</h5>	
+				<div>					
+					<h5><index>a.</index>bootstrap(), element(), module() </h5>				
+				</div>				
+			</div>
+		</div>
+	</div>	
+	<div>
+		<h3>VIII. Validation:  novalidate, $invalid, $valid, $pristine, $dirty, $error</h3>
+		<div>
+			<h5><index>1.</index><h5>
+			<div>
+				<h5><index>a.</index> novalidate</h5>
+				<note>< form novalidate> => avoid validating by HTML5, </note>
+				<h5><index>b.</index>$invalid, $valid</h5>				
+				<note>only be able to submit if it is valid</note>
+				<h5><index>c.</index> $pristine, $dirty</h5>				
+				<note>never show error if the user has not interacted with the field yet ($pristine or not $dirty) </note>				
+			</div>
+			<h5><index>2.</index> $error</h5>
+			<div>
+				<note>$error is an object containig informations about error of inputs of form with fields corresponding to name of them</note>
+				<p><em>use console.log($scope.myform) to see more information</em>
+			</div>
+			<h5><index>3.</index>some validations</h5>	
+			<div ng-init="username='Phuc Ho';email='hongocphuc90dn@gmail.com'">			
+				<form  name="myForm">	
+					<h5><index>a.</index>required</h5>		
+					<p><note>< form  name="myForm"> < input name="username" required> => myForm.username.$error.required</note>
+					<p><fix>Username:</fix> <input type="text" name="username" ng-model="username" required>
+					<span style="color:red" ng-show="myForm.username.$dirty && myForm.username.$invalid">
+						<span ng-show="myForm.username.$error.required">Username is required.</span>
+					</span>
+					<h5><index>b.</index> type="email"</h5>
+					<p><note>< form  name="myForm">  < input name="email" type="email"> => myForm.email.$error.email </note>
+					<p><fix>Email: </fix><input type="email" name="email" ng-model="email" required>
+					<span style="color:red" ng-show="myForm.email.$dirty && myForm.email.$invalid">
+						<span ng-show="myForm.email.$error.required">Email is required.</span>
+						<span ng-show="myForm.email.$error.email">Invalid email address.</span>
+					</span>
+					
+					<p>
+					<input type="submit"
+						ng-disabled="myForm.user.$dirty && myForm.user.$invalid ||
+						myForm.email.$dirty && myForm.email.$invalid">		
+					
+				</form>
+			</div>
+		</div>
+		
+	</div>
+</div>	

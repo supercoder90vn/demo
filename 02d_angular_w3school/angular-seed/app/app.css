@@ -1,0 +1,124 @@
+/* app css stylesheet */
+
+.menu {
+  list-style: none;
+  border-bottom: 0.1em solid black;
+  margin-bottom: 2em;
+  padding: 0 0 0.5em;
+}
+
+.menu:before {
+  content: "[";
+}
+
+.menu:after {
+  content: "]";
+}
+
+.menu > li {
+  display: inline;
+}
+
+.menu > li:before {
+  content: "|";
+  padding-right: 0.3em;
+}
+
+.menu > li:nth-child(1):before {
+  content: "";
+  padding: 0;
+}
+
+
+.topHeader {
+  
+  height:50px;
+  text-align: center;  
+  font-size: 30px;
+  color: white;
+  width: 100%;
+  display: inline-block;
+  
+  background-color: grey;
+}
+
+table, th , td  {
+  border: 1px solid grey;
+  border-collapse: collapse;
+  padding: 5px;
+}
+table tr:nth-child(odd)	{
+  background-color: #f1f1f1;
+}
+table tr:nth-child(even) {
+  background-color: #ffffff;
+}
+
+.active{
+  color: red;
+  background-color: yellow;
+}
+
+input{
+  color: black;
+}
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+div {
+	padding-left: 20px;
+  
+}		
+index{
+	color: red;
+	font-weight: bold;
+	width: 30px;
+	display: inline-block;
+}
+
+h3{
+	color: blue;
+}
+h5{
+	color: blue;
+  font-weight: bold
+}
+fix{
+  
+	color: green;
+}
+.lesson{
+  border:2px solid blue;
+  padding-bottom: 10px;
+  padding-right: 50px;
+  padding-left: 10px;
+  margin: 5px;
+  background-color: #FBEFFB;
+  text-align: left;
+}
+note {
+	background-color: yellow
+}
+path{
+  color: #A901DB;
+  font-style: italic;;
+  font-weight: bold;
+}
+tab{
+    margin-right: 20px;
+}
+.html{  
+  background-color: #EFFBEF;
+  margin-left: 10px;
+  padding-left: 10px;
+}
+.script{  
+  background-color: #FFFEED;
+  margin-left: 10px;
+  padding-left: 10px;
+}
+warn{
+  color:red;
+}
+/*
+reference:
+http://html-color-codes.info/
+*/

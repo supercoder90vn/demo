@@ -1,0 +1,36 @@
+<div style="text-align: left"> views/particles/nav_ph.html</div>
+<div class="lesson">
+
+<br>
+  <index>I.</index>modal
+  <div class="phcontainer">
+     <path> view/nav.html< /path>
+     <div class="html">
+        < li ng-show="signedIn()">< a href="" data-toggle="<note>modal</note>" data-target="<note>#posModal</note>">a difficult task< /a>< /li>
+     </div>
+     
+      <path> partials/post.html </path>
+       <div class="html">
+          < div class="modal fade" <note>id="posModal"</note> ng-controller="TaskController">  
+       </div> 
+  </div>
+</div>
+<div class="lesson">
+<index>II.</index>$location
+<div class="script">
+  app.controller('TaskController', function(<note> $location</note>) {
+<br><tab>$scope.postTask = function(task) {
+<br><tab><tab>$scope.tasks.<note>$add</note>(task);
+<br><tab><tab>// for Update: $scope.tasks.<note>$save</note>(task);
+<br><tab><tab><note>$location</note>.path('/');
+<br><tab>};
+<br>}
+</div>
+<index>III.</index>
+<div class="html">
+  < form <note>ng-submit</note>="postTask(<note>task</note>)">  
+  <br><tab>< input <note>type="number"</note> ng-model="task.total".../>
+</div>
+question:  model 'task' is initilized at ng-submit ???
+  
+</div>

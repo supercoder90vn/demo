@@ -1,0 +1,61 @@
+
+<div class="modal fade" id="posModal" ng-controller="TaskController">  
+  <div class="modal-dialog">
+    <div class="modal-content" style="width:900px">      
+
+      <div class="panel panel-warning title">
+      <!--PHUC ( ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->  
+      <div class="lesson">
+        <index>I.</index>modal
+        <div class="phcontainer">
+           <path> view/nav.html< /path>
+           <div class="html">
+              < li ng-show="signedIn()">< a href="" data-toggle="<note>modal</note>" data-target="<note>#posModal</note>">Post a Task< /a>< /li>
+           </div>
+           
+            <path> partials/post.html </path>
+             <div class="html">
+                < div class="modal fade" <note>id="posModal"</note> ng-controller="TaskController">  
+             </div> 
+        </div>
+      </div>
+    <div class="lesson">
+      <index>II.</index>$location
+      <div class="script">
+        app.controller('TaskController', function(<note> $location</note>) {
+      <br><tab>$scope.postTask = function(task) {
+      <br><tab><tab>$scope.tasks.<note>$add</note>(task);
+      <br><tab><tab>// for Update: $scope.tasks.<note>$save</note>(task);
+      <br><tab><tab><note>$location</note>.path('/');
+      <br><tab>};
+      <br>}
+    </div>
+      <index>III.</index>
+      <div class="html">
+        < form <note>ng-submit</note>="postTask(<note>task</note>)">  
+        <br><tab>< input <note>type="number"</note> ng-model="task.total".../>
+      </div>
+      question:  model 'task' is initilized at ng-submit ???
+        
+    </div>
+
+    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ )PHUC -->
+        <div class="panel-heading title">            
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>        
+            <h3 class="panel-title">Post a Task (FREE)</h3>
+        </div>
+
+        <div class="panel-body">
+          <form ng-submit="createTask()">              
+            <input type="text" ng-model="task.title" class="form-control" placeholder="Task title" required><br>             
+            <textarea ng-model="task.description" class="form-control" placeholder="Describe what you need done" required></textarea><br>
+            <input type="number" ng-model="task.total" class="form-control" placeholder="How much will you pay?" required><br>
+            <input type="submit" value="Post Now" class="btn btn-warning">
+          </form>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</div>

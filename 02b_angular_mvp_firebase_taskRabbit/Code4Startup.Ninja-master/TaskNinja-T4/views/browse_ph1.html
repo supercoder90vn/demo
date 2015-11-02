@@ -1,0 +1,12 @@
+
+<div class="phborder" style="margin-left:-100px">
+	views/browse.html
+	<div class="lesson">	
+			<index>1.</index>
+			orderBy: 'datetime'<note>:true</note> =>  decreasing order
+			<div class="html">
+					< a ng-repeat="task in tasks | <note>filter: {title: searchTask , status: '!cancelled'}</note> |<note> orderBy: 'datetime':true"</note> <note> ng-href</note>="#/browse/{ {task.<note>$id</note>} }">				  
+			</div>							
+		</div>	
+	</div>				
+<div>
