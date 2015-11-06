@@ -1,0 +1,16 @@
+extends ../layout
+
+block content
+ .spacer
+ .container
+  .row
+   .col-lg-8.col-lg-offset-2.col-md-10.col-md-offset-1
+    h1= title
+    br
+    ul(class='list-group')
+     each category, i in categories
+      li(class='list-group-item')
+       a(href='/articles/category/#{category._id}') 
+         h2(style='color:black') #{(i+1)+'. '+ category.title}
+         br
+         span(style='color:black') #{category.description}

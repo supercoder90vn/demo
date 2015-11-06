@@ -1,0 +1,57 @@
+doctype html
+html
+  head
+    title= title
+    link(rel='stylesheet', href='/bower_components/foundation/css/foundation.css')
+    link(rel='stylesheet', href='/stylesheets/style.css')
+  body
+    .row
+      .large-12.columns
+        .nav-bar.right
+          ul.button-group
+            li
+              a.button(href='/') Home
+            li
+              a.button(href='/businesses') View All
+            li
+              a.button(href='/businesses/add') Add Listing
+        h1
+          | BizList
+        hr
+    .row
+      .large-9.columns(role='content')
+        != messages()
+        ul.errors
+         if errors
+          each error, i in errors
+           li.alert.alert-danger #{error.msg}
+        block content
+      aside.large-3.columns
+        h5 Categories
+        ul.side-nav
+          li
+            a(href='/businesses/category/Accounting') Accounting
+          li
+            a(href='/businesses/category/Construction') Construction
+          li
+            a(href='/businesses/category/Education') Education
+          li
+            a(href='/businesses/category/Food') Food
+          li
+            a(href='/businesses/category/Healthcare') Healthcare
+          li
+            a(href='/businesses/category/Real%20Extate') Real Estate
+          li
+            a(href='/businesses/category/Technology') Technology
+          li
+            a(href='/businesses/category/Other') Other
+    footer.row
+      .large-12.columns
+        hr
+        .row
+          .large-6.columns
+            p © Copyright BizList.
+          .large-6.columns
+
+    script(src='/bower_components/jquery/dist/jquery.js')
+    script(src='/bower_components/foundation/js/foundation.js')

@@ -1,0 +1,54 @@
+<section data-ng-controller="JobsController" data-ng-init="findOne()">
+	<div class="page-header">
+		<div class="row">
+			<div class="col-md-8">
+				<h1 data-ng-bind="job.title"></h1>
+			</div>
+			<div class="col-md-4">
+				<div ng-if="job.how_to_apply == 'website'">
+					<a class="btn btn-primary pull-right" href="{{job.contact_website}}">Apply Now</a>
+				</div>
+
+				<div ng-if="job.how_to_apply == 'email'">
+					<a class="btn btn-primary pull-right" href="mailto:{{job.contact_email}}">Apply Now</a>
+				</div>
+
+				<div ng-if="job.how_to_apply == 'phone'">
+					<a class="btn btn-primary pull-right">Call {{job.contact_phone}}</a>
+				</div>
+			</div>
+		</div>
+	
+
+	<div class="well">
+		<ul class="list-group">
+			<li class="list-group-item">Company: <strong><span data-ng-bind="job.company"></span></strong></li>
+			<li class="list-group-item">Recruiter: <strong><span data-ng-bind="job.user.displayName"></span></strong></li>
+                <li class="list-group-item">Job Type: <strong><span data-ng-bind="job.job_type"></span></strong></li>
+                <li class="list-group-item">How To Apply: <strong><span data-ng-bind="job.how_to_apply"></span></strong></li>
+                <li class="list-group-item">Contact Email: <strong><span data-ng-bind="job.contact_email"></span></strong></li>
+                <li class="list-group-item">Contact Website: <strong><span data-ng-bind="job.contact_website"></span></strong></li>
+                <li class="list-group-item">Contact Phone: <strong><span data-ng-bind="job.contact_phone"></span></strong></li>
+		</ul>
+	</div>
+
+	<h3>Job Description</h3>
+	<span data-ng-bind="job.job_description"></span>
+</div>
+	<div class="pull-right" data-ng-show="((authentication.user) && (authentication.user._id == job.user._id))">
+		<a class="btn btn-primary" href="/#!/jobs/{{job._id}}/edit">
+			<i class="glyphicon glyphicon-edit"></i>
+		</a>
+		<a class="btn btn-primary" data-ng-click="remove();">
+			<i class="glyphicon glyphicon-trash"></i>
+		</a>
+	</div>
+	<small>
+		<em class="text-muted">
+			Posted on
+			<span data-ng-bind="job.created | date:'mediumDate'"></span>
+			by
+			<span data-ng-bind="job.user.displayName"></span>
+		</em>
+	</small>
+</section>

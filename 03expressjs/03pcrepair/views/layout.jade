@@ -1,0 +1,24 @@
+- var HOMEPAGE = false;
+block variables
+doctype html
+html
+  head
+    //at contact.js: res.render('contact', { title: 'Contact' });
+    //- title = 'Contact 2'
+    title= title 
+    link(rel='stylesheet', href='/stylesheets/bootstrap.css')
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    script(src='/javascripts/jquery.js')
+    script(src='/javascripts/bootstrap.js')    
+    
+  body
+    include ./includes/navbar.jade
+    if HOMEPAGE
+     include ./includes/showcase.jade
+    .container
+     block content      
+      hr
+      footer
+        p © Company 2014
+    // /container
+

@@ -1,0 +1,27 @@
+- var HOMEPAGE = false;
+block variables
+doctype html
+html
+  head
+    //at contact.js: res.render('contact', { title: 'Contact' });
+    //- title = 'Contact 2'
+    title= title 
+    link(rel='stylesheet', href='/stylesheets/bootstrap.css')
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    script(src='/javascripts/jquery.js')
+    script(src='/javascripts/bootstrap.js')
+    script(src='/javascripts/main.js') 
+    
+  body
+    include ./includes/navbar_view.jade
+    .container
+      !=Manage.connectflashParse(messages())
+    if HOMEPAGE
+     include ./includes/showcase_view.jade
+    .container
+     block content      
+      hr
+      footer
+        p © Company 2014
+    // /container
+

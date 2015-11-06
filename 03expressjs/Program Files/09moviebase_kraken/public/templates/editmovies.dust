@@ -1,0 +1,72 @@
+{>"layouts/master" /}
+
+{<body}
+<div class="row">
+      <div class="large-12 columns">
+          <h2>Edit Movie</h2>
+        <form method="post" action="/movies/edit/{movie._id}">
+          <div class="row">
+            <div class="large-12 columns">
+              <label>Title *
+                <input name="title" name="title" type="text" value="{movie.title}" placeholder="Title" />
+              </label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="large-12 columns">
+              <label>Release Date *
+                <input id="release_date" name="release_date" type="date" />
+              </label>
+            </div>
+            <div class="large-12 columns">
+              <label>Director
+                <input name="director" type="text" value="{movie.director}" placeholder="Director" />
+              </label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="large-12 columns">
+              <label>Genre
+                <select name="genre">
+                  <option value="Action">Action</option>
+                    <option value="Comedy">Comedy</option>
+                    <option value="Drama">Drama</option>
+                    <option value="Documentary">Documentary</option>
+                    <option value="Horror">Horror</option>
+                    <option value="Thriller">Thriller</option>
+                    <option value="Other">Other</option>
+                </select>
+              </label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="large-12 columns">
+              <label>Plot
+                <textarea name="plot" placeholder="Plot">{movie.plot}</textarea>
+              </label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="large-12 columns">
+                <label>Cover URL
+                  <input name="cover" type="text" value="{movie.cover}" placeholder="Image URL" />
+                </label>
+            </div>
+          </div>
+            <div class="row">
+             <div class="large-12 columns">
+              <label>Youtube Trailer URL
+                <input name="trailer" type="text" value="{movie.trailer}" placeholder="Trailer URL" />
+              </label>
+            </div>
+            </div>
+          <div class="row">
+            <div class="large-12 columns">
+              <input type="submit" class="button" value="Submit">
+            </div>
+          </div>
+          <input type="hidden" name="_csrf" value="{_csrf}">
+          </form>
+      </div>  
+    </div>
+{/body}

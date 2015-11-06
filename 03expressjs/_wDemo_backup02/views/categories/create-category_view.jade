@@ -1,0 +1,13 @@
+extends ../layout_view
+
+block content
+ .spacer
+ .container
+  .row
+   .col-lg-8.col-lg-offset-2.col-md-10.col-md-offset-1
+    h1= title
+    form(method='post', action='/categories/add')
+     .form-group
+      label Title:
+      input.form-control(name='title', type='text')
+     input.btn.btn-primary(name='submit',type='submit',value='Save') 

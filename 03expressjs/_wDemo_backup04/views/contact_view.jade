@@ -1,0 +1,35 @@
+extends layout_view
+
+block content
+    h2 API     
+    .container
+        |Click <b>"auto-generate-database"</b> at <em>"navigate-bar"</em> to create or reset database
+        br
+        |Get JSON data:
+        .container
+            |1. List of Articles : 
+            a(href="http://localhost:3000/api/articles") http://localhost:3000/api/articles
+            br
+            |2. List of Categories : 
+            a(href="http://localhost:3000/api/categories") http://localhost:3000/api/categories
+            br
+            |3. A Article: choose a <b>_id</b> from List of Articles above and replace to <b>:id</b> at http://localhost:3000/api/articles/show/<b>:id</b>
+            br
+            |4. Articles of a Category: choose a <b>title</b> from List of Categories above and replace to <b>:category</b> at http://localhost:3000/api/categories/articles/<b>:category</b>
+    h2 Contact  
+    .container
+        .row.col-md-9.col-md-offset-1
+            form(method='post', action='/contact/send')    
+                .form-group
+                label Name
+                input.form-control(type='text',name='name', placeholder='Enter Your Name', value='#{name}')
+                .form-group
+                label Your Email
+                input.form-control(type='email', name='yourEmail', placeholder='Enter Your Email', value='#{yourEmail}')
+                .form-group
+                label To Email
+                input.form-control(type='email', name='toEmail', placeholder='To Email', value='#{toEmail}')
+                .form-group
+                label Message
+                textarea.form-control(name='message', placeholder='Enter a Message...') #{message}
+                button.btn.btn-default(type='submit') Submit

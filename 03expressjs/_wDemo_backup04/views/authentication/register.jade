@@ -1,0 +1,20 @@
+extends  ../layout_view
+
+block content
+    form.form-signin(method='post', action='/authentication/register')
+      h2.form-signin-heading #{title}
+      label Name
+      input.form-control(type='text', name='name', placeholder='Name', required='', autofocus='')
+      label Username
+      input.form-control(type='text', name='username', placeholder='Username', required='', autofocus='')
+      label Email
+      input.form-control(type='email', name='email', placeholder='Email Address', required='', autofocus='')
+      label Password
+      input.form-control(type='password', name='password', placeholder='Password', required='')
+      label Confirm Password
+      input.form-control(type='password', placeholder='Confirm Password', name='password2', required='')
+      br
+      button.btn.btn-lg.btn-primary.btn-block(type='submit') Register
+      br
+      | Have an Account?
+      a(href='/authentication/login') Login Now

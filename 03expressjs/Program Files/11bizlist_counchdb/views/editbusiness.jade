@@ -1,0 +1,57 @@
+extends layout
+
+block content
+ h2 Edit Listing
+   form(method='post', action='/businesses/edit/#{business._id}')
+    .row
+     .large-12.columns
+      label
+       | Business Name
+       input(type='text', name='name', placeholder='Business Name' value="#{business.name}")
+    .row
+        .large-12.columns
+          label
+            | Category
+            select(name='category')
+              option(value='0') Select a Category
+              option(value='Accounting') Accounting
+              option(value='Construction') Construction
+              option(value='Education') Education
+              option(value='Food') Food
+              option(value='Healthcare') Healthcare
+              option(value='Real Estate') Real Estate
+              option(value='Technology') Technology
+              option(value='Other') Other
+      .row
+        .large-12.columns
+          label
+            | Website
+            input(type='text', name='website', placeholder='Add Website' value='#{business.website}')
+      .row
+        .large-12.columns
+          label
+            | Phone Number
+            input(type='text', name='phone', placeholder='Add Phone' value='#{business.phone}')
+      .row
+        .large-12.columns
+          label
+            | Street Address
+            input(type='text', name='address', placeholder='Street Address' value='#{business.address}')
+      .row
+        .large-12.columns
+          label
+            | City
+            input(type='text', name='city', placeholder='Add City' value='#{business.city}')
+      .row
+        .large-12.columns
+          label
+            | State
+            input(type='text', name='state', placeholder='Add State' value='#{business.state}')
+      .row
+        .large-12.columns
+          label
+            | Zipcode
+            input(type='text', name='zip', placeholder='Add Zip' value='#{business.zip}')
+      .row
+        .large-12.columns
+          input(type='submit', value='Submit' class='button')

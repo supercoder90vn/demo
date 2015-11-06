@@ -1,0 +1,14 @@
+{>"layouts/master" /}
+
+{<body}
+    {#movies}
+            <div class="large-4 columns movie">
+                <img src="{.cover}">
+                <h3>{.title}</h3>
+                <a href="/movies/details/{._id}" class="button tiny">Info</a> <a href="https://www.youtube.com/watch?v={.trailer}" target="_blank" class="button success tiny">View Trailer</a>
+            </div>
+    {:else}
+    <p>No movie results</p>
+
+    {/movies}
+{/body}

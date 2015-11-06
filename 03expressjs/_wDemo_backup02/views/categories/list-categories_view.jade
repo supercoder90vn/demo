@@ -1,0 +1,18 @@
+extends ../layout_view
+
+block content
+ .spacer
+ .container
+  .row
+   .col-lg-8.col-lg-offset-2.col-md-10.col-md-offset-1
+    h1= title
+    br
+    ul(class='list-group')
+     each category, i in categories
+      li(class='list-group-item')
+        a(href='/categories/articles/#{category.title}') 
+          h2(style='color:black') #{(i+1)+'. '+ category.title}   
+        |&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+        a.glyphicon.glyphicon-remove(href='/categories/delete/#{category._id}') delete
+        //a.glyphicon.glyphicon-remove(href='/api/people', onclick="onClick_test") delete 2
+        a(class='btn btn-danger category-delete pull-right', data-category-id=category._id.toString(), data-csrf=locals._csrf) Delete 2
