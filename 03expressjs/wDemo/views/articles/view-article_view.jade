@@ -5,10 +5,12 @@ block content
     .row
       .col.col-md-10.col-md-offset-1
         h1 #{article.title}        
-        h2 #{article.subtitle}
-        small
-          em Posted by #{article.reporter}
-            |  on #{moment(article.created_at).format('MMMM Do YYYY, h:mm:ss a')}    
+        small #{article.subtitle}
+        
+        br
+        br
+        em Posted by #{article.reporter}
+        |  on #{moment(article.created_at).format('MMMM Do YYYY, h:mm:ss a')}    
     .row
       .col-md-8.col-md-offset-2
         hr

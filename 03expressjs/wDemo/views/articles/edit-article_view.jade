@@ -27,7 +27,7 @@ block content
       textarea.form-control(name='body', id='article_body') #{article.body}
       
      input.btn.btn-primary(name='submit',type='submit',value='Save') 
-     &nbsp&nbsp&nbsp
+     |&nbsp&nbsp&nbsp
      a.btn.btn-default(href='/articles/show/#{article._id}') Back   
         
      a.btn.btn-danger.pull-right.article-delete(data-article-id=article._id.toString(), data-csrf=locals._csrf) Delete

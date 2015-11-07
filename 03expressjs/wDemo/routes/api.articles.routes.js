@@ -34,15 +34,21 @@ router.get('/show/:id', function (req, res, next) {
 });
 
 // 2. CREATE
-router.post('/add', function (req, res) {
-	req.checkBody('title', 'Title is required').notEmpty();
-	req.checkBody('reporter', 'Reporter field is required').notEmpty();
-	req.checkBody('category', 'Category field is required').notEmpty();
-	var errors = req.validationErrors();
-	if (errors) {
-		res.status(400).json(errors);
-	}
-	else {// AFTER VALIDATION	
+router.post('/add',
+	function (req, res,next) {
+		//VALIDATION
+		req.checkBody('title', 'Title is required').notEmpty();
+		req.checkBody('reporter', 'Reporter field is required').notEmpty();
+		req.checkBody('category', 'Category field is required').notEmpty();
+		var errors = req.validationErrors();
+		if (errors) {
+			res.status(400).json(errors);
+		}
+		else {	
+			next();	
+		}
+	}, 
+	function (req, res, next) {
 		var article = ClientServer.createArticle(req.body);
 		Article.addArticle(article, function (err, data) {
 			if (err) {
@@ -52,7 +58,7 @@ router.post('/add', function (req, res) {
 			}
 		});
 	}
-});
+);
 
 // 2. UPDATE
 router.put('/edit/:id', function (req, res) {

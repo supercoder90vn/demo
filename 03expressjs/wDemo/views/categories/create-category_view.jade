@@ -9,5 +9,5 @@ block content
     form(method='post', action='/categories/add')
      .form-group
       label Title:
-      input.form-control(name='title', type='text')
+      input.form-control(name='title', type='text', value="#{category.title}")
      input.btn.btn-primary(name='submit',type='submit',value='Save') 

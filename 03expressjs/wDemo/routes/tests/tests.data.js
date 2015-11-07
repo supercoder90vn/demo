@@ -2,6 +2,8 @@
 var ClientHelper = require('../../services/client-helper.js');
 var _ = ClientHelper._;
 module.exports = new function(){
+	// contain DATA for testing
+	
 	this.fullnameFrom2Name = function(names){
 		return names[0] +' '+ names[1];
 	}

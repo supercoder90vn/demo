@@ -1,0 +1,29 @@
+- var HOMEPAGE = false;
+block variables
+doctype html
+html
+  head
+    title= title 
+    link(rel='stylesheet', href='/stylesheets/bootstrap.css')
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    script(src='/javascripts/jquery.js')
+    script(src='/javascripts/bootstrap.js')
+    script(src='/javascripts/main.js')
+    
+  body
+    include ./includes/navbar_view.jade
+    .container
+      !=ClientHelper.connectflashParse(messages())
+    if HOMEPAGE
+     include ./includes/showcase_view.jade
+    .container
+     ul.errors
+       if errors
+         each error, i in errors
+           li.alert.alert-danger #{error.msg}
+     block content      
+      hr
+      footer
+        p © Company 2014
+    // /container
+

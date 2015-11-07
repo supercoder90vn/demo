@@ -1,0 +1,29 @@
+nav.navbar.navbar-inverse
+      .container
+        a.navbar-brand( href="/") EXPRESS.JS 
+        #navbar.navbar-collapse.collapse
+         ul.nav.navbar-nav
+            li(class=title=='Contact'?'active':undefined)
+             a(href="/contact") Contact
+            li(class=title=='Articles'?'active':undefined)
+             a(href="/articles") Articles
+            li(class=title=='Add Article'?'active':undefined)
+             a(href="/articles/add") Add Article
+            li(class=title=='Categories'?'active':undefined)
+             a(href="/categories") Categories
+            li(class=title=='Add Category'?'active':undefined)
+             a(href="/categories/add") Add Category
+.container
+     ul.navbar.list-inline
+        if !user
+            li(class=title=='Login'?'active':undefined)
+            a(href="/authentication") Login
+            li(class=title=='Register'?'active':undefined)
+            a(href="/authentication/register") Register
+        else
+            li
+            a(href="/authentication/logout")  Logout 
+            li
+            a(href="/tests/data/generate")   [ 1.auto-generate-database ]
+            li
+            a(href="/tests/data/delete")     [ 2.delete-all-database ]

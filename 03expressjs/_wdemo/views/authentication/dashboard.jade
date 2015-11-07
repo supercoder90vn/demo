@@ -1,0 +1,53 @@
+extends  ../layout_view
+
+block content
+  span(style="color:green") Welcome <b>#{user.name} ! </b>
+  br
+  h1 I. Current Features
+  .container
+    row.col-md-10.col-md-offset-1
+        table.table.table-bordered
+          tbody
+            each feature, i in features.currents
+              tr
+                td 
+                  h3 #{(i+1) + '.' +feature.technique} 
+                td
+                  ul
+                    li Uses:
+                    .container
+                      |#{feature.uses}
+                    li Reference:
+                    .container
+                      each reference, j in feature.references
+                        a(href='#{reference.url}') - #{reference.text}
+                        br
+  .container
+    row.col-md-10.col-md-offset-1           
+      h3 Other useful modules: 
+      .container
+        b 1. underscore.js
+        .container
+          |convenient for testin, map, filter, invoke...
+          a(href='http://underscorejs.org') http://underscorejs.org    
+        b 2. moment.js
+        .container
+          |Parse, validate, manipulate, and display dates <format, time ago...>
+          a(href='http://momentjs.com/') http://momentjs.com/
+        b 3. connect-flash.js
+        .container  
+          |show messages of success, warning, error...
+          a(href='https://github.com/jaredhanson/connect-flash') https://github.com/jaredhanson/connect-flash  
+  hr
+  h1 II. Next updates
+  .container
+    row.col-md-10.col-md-offset-1
+      each feature, i in features.futures      
+        h3 #{(i+1)+'. '+feature.technique}
+        ul
+          li Uses: #{feature.uses}
+          li Reference:
+          .container
+            each reference, j in feature.references
+              a(href='#{reference.url}') - #{reference.text}
+              br

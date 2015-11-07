@@ -1,0 +1,95 @@
+{
+	"currents":[
+		{
+			"technique":"mongoose",
+			"uses":"handle MongoDB database at localhost or MongoLab at online host (should test MongoDB by cmd first)",
+			"references":[
+				{
+					"url":"http://mongoosejs.com/docs/api.html",
+					"text": "http://mongoosejs.com/docs/api.html"
+				},{
+					"url":"https://docs.mongodb.org/manual/tutorial/insert-documents",
+					"text": "https://docs.mongodb.org/manual/tutorial/insert-documents/"
+				},{	
+					"url":"https://docs.mongodb.org/manual/reference/operator/update/push",
+					"text": "https://docs.mongodb.org/manual/reference/operator/update/push"
+				}	
+				
+			]
+		},
+		{
+			"technique":"passport",
+			"uses":"Register & Login",
+			"references":[
+				{
+					"url":"https://github.com/jaredhanson/passport",
+					"text": "https://github.com/jaredhanson/passport"
+				},
+				{
+					"url":"http://mherman.org/blog/2013/11/10/social-authentication-with-passport-dot-js",
+					"text": "Social Authentification"
+				}
+			]
+		},
+		{
+			"technique":"request",
+			"uses":"testing send GET, POST, DELETE, PUT method to server's API ",
+			"references":[
+				{
+					"url":"https://github.com/request/request",
+					"text": "https://github.com/request/request"
+				}	
+			]
+		},
+		{
+			"technique":"expressValidator",
+			"uses":"validation value from POST method ",
+			"references":[
+
+				{
+					"url":"https://github.com/ctavan/express-validator",
+					"text": "https://github.com/ctavan/express-validator"
+				}
+			]
+		},
+		{
+			"technique":"nodemailer",
+			"uses":"send mail ",
+			"references":[
+				{
+					"url":"https://github.com/andris9/Nodemailer",
+					"text": "https://github.com/andris9/Nodemailer"
+				}
+			]
+		}
+	],
+
+	"futures":[
+		{
+			"technique":"Socket io",
+			"uses":"building Chat room",
+			"references":[
+				{
+					"url":"http://socket.io",
+					"text": "http://socket.io"
+				}				
+			]
+		},
+		{
+			"technique":"debugging",
+			"uses":"selected information in colorful lines at cmd",
+			"references":[
+				{
+					"url":"http://expressjs.com/guide/debugging.html",
+					"text": "http://expressjs.com/guide/debugging.html"
+				}
+			]
+		},
+		{
+			"technique":"Social Integrations",
+			"uses":"Login by Social Website, Get information from users from them",
+			"references":[
+			]
+		}
+	]
+}

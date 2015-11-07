@@ -7,7 +7,7 @@ var Article = ServerHelper.Article;
 
 //1. LIST
 router.get('/', function (req, res, next) {
-	console.log();console.log("api/categrories GET");console.log();
+	
 	Category.getCategories(function (err, categories) {
 		if (err) {
 			res.send(err);
@@ -19,18 +19,29 @@ router.get('/', function (req, res, next) {
 });
 
 // 2. POST
-router.post('/add', function (req, res) {	
-	var category = new Category();
-	category.title = req.body.title;
-
-	Category.addCategory(category, function (err, data) {
-		if (err) {
-			res.send(err);
-		} else {
-			res.status(200).send();
+router.post('/add', 
+	function (req, res,next) {	
+		//VALIDATION		
+		req.checkBody('title', 'Category field is required').notEmpty();
+		var errors = req.validationErrors();
+		if (errors) {
+			res.status(400).json(errors);
 		}
-	});
-});
+		else{
+			next();
+		}		
+	},
+	function (req, res,next) {	
+		//var category = new Category();
+		Category.addCategory(req.body, function (err, data) {
+			if (err) {
+				res.send(err);
+			} else {
+				res.status(200).send();
+			}
+		});
+	}
+);
 
 // 3. DELETE
 router.delete('/delete/:id', function (req, res, next) {

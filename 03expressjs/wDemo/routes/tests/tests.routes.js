@@ -98,7 +98,7 @@ router.get('/data/generate'
 			});
 		}			
 	},function(req, res, next) {
-		req.flash('success','Created database for Articles & Categories Successfully');
+		req.flash('success','Created database for Articles, Comments & Categories Successfully');
 		res.redirect('/categories');
 	}
 );

@@ -14,16 +14,20 @@ router.get('/', function (req, res, next) {
 });
 
 router.get('/download', function(req, res){ 
-    //res.download('/downloads/pdf-sample.pdf');
     res.download(path.join(__dirname, '/../downloads/pdf-sample.pdf'));
-    //res.redirect('/');
 });
 // Send Email
 router.post('/send', 
-    function (req, res, next) {        
+    function (req, res, next) { 
+        // VALIDATION FIRST       
         req.checkBody('name', 'Name is required').notEmpty();
+        
         req.checkBody('yourEmail', 'Your Email is required').notEmpty();
+        req.checkBody('yourEmail', 'Valid email required').isEmail();
+        
         req.checkBody('toEmail', 'To Email is required').notEmpty();
+        req.checkBody('toEmail', 'Valid email required').isEmail();
+        
         req.checkBody('message', 'Message is required').notEmpty();
         var errors = req.validationErrors();
         if(errors){     
@@ -51,10 +55,9 @@ router.post('/send',
     
         // Email Setup
         var mailOptions = {
-            from: 'Ho Ngoc Phuc  <info.envelope.from@gmail.com>',// show Ho Ngoc Phuc  instead of hongocphuc90dn.test@gmail.com
+            from: 'Ho Ngoc Phuc  <info.envelope.from@gmail.com>',
             to: req.body.yourEmail, // to: 'hongocphuc90dn@gmail.com, hongocphuc90dn_2@gmail.com'
             subject: 'Website Submission from phuc',
-            // Plain Text Version( not work if there is html configuration)
             text: 'You have a submission with the following details... Name: ' + req.body.name + 'Email: ' + req.body.yourEmail + 'Message: ' + req.body.message,
             html: '<p>You got a website submission with the following details...</p><ul><li>Name: <b>' + req.body.name + '</b></li><li>Email: <b>' + req.body.yourEmail + '</b></li><li>Message: <b>' + req.body.message + '</b></li></ul>'
         };
@@ -62,8 +65,7 @@ router.post('/send',
         // Send
         transporter.sendMail(mailOptions, function (error, info) {
             if (error) {
-                console.log(error);            
-                // PHUC_COMMENT: 
+                console.log(error); 
                 req.flash("error","Slow internet may cause ERROR: ETIMEOUT  !")
                 res.send(error + '<br>' + JSON.stringify(error));    
             } else {            

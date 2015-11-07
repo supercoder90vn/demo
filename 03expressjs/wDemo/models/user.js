@@ -16,7 +16,8 @@ var userSchema = mongoose.Schema({
 		type: String
 	},
 	join_date: {
-		type: Date
+		type: Date,
+		default: Date.now
 	},
 	updated_at: {
 		type: Date,
@@ -36,7 +37,8 @@ module.exports.getUserByUsername = function(username, callback){
 	User.findOne({username: username}, callback);
 }
 
-// Compare password
+// Compare password unsynchronously
+/*
 module.exports.comparePassword = function(candidatePassword, hash, callback){
 	bcrypt.compare(candidatePassword, hash, function(err, isMatch){
 		if(err){
@@ -46,7 +48,7 @@ module.exports.comparePassword = function(candidatePassword, hash, callback){
 		}
 	});
 }
-
+*/
 // Add user
 module.exports.addUser = function(user, callback){
 	User.create(user, callback);

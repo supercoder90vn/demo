@@ -1,0 +1,19 @@
+extends ../layout_view
+
+block content 
+ .container
+    h1 Lastest articles:
+    br
+    .row      
+      .col-lg-8.col-lg-offset-2.col-md-10.col-md-offset-1
+        if articles.length  
+            each article, i in articles
+                a(href='/articles/show/#{article._id}')
+                    h2.post-title #{article.title}
+                    h4.post-subtitle #{article.subtitle}
+                em
+                    | Posted by <b>#{article.reporter}</b>
+                    |  on #{moment(article.created_at).format('MMMM Do YYYY, h:mm:ss a')}
+                hr
+        else 
+          |No Article found in this category. Please Add One Article
