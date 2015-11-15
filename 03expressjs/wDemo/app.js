@@ -19,16 +19,6 @@ var expressValidator = require('express-validator');
 mongoose.connect('mongodb://user:123123@ds051524.mongolab.com:51524/expressjs');
 require('./config/passport')(passport);
 
-
-
-
-
-
-
-
-
-
-
 var db = mongoose.connection;
 
 var tests = require('./routes/tests/tests.routes');

@@ -1,0 +1,28 @@
+extends layout_view
+
+block content
+   - title = "Real Time Web Chat" 
+    body
+    #error(style="color:red")
+    .row
+    .col-md-8
+        #userFormWrap
+          h1 Create Username
+          form#userForm
+            input#username.form-control(type='text', placeholder='Enter Username...')
+            br
+            button#userFormButton.btn.btn-default(type='submit') Submit
+        #mainWrap
+          h1 Speak Your Mind
+          form#chatForm
+           .form-group
+              textarea#chatInput.form-control(name='body', placeholder='Say Something...')
+              br
+              button#chatFormButton.btn.btn-default(type='submit') Submit
+              br
+        br
+        #chatWindow.well
+    .col-md-4
+        h3 Chat Users
+        ul.list-group
+        #users

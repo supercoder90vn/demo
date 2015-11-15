@@ -8,65 +8,82 @@ var acl = require('acl');
 // Using the memory backend
 acl = new acl(new acl.memoryBackend());
 
+
+var path = require('path'),
+    phlog = require(path.resolve('./config/lib/services/phuc-server-helper.js')).logger.log;
 /**
  * Invoke Cars Permissions
  */
 exports.invokeRolesPolicies = function () {
-  acl.allow([{
-    roles: ['admin'],
-    allows: [{
-      resources: '/api/cars',
-      permissions: '*'
-    }, {
-      resources: '/api/cars/:carId',
-      permissions: '*'
-    }]
-  }, {
-    roles: ['user'],
-    allows: [{
-      resources: '/api/cars',
-      permissions: ['get', 'post']
-    }, {
-      resources: '/api/cars/:carId',
-      permissions: ['get']
-    }]
-  }, {
-    roles: ['guest'],
-    allows: [{
-      resources: '/api/cars',
-      permissions: ['get']
-    }, {
-      resources: '/api/cars/:carId',
-      permissions: ['get']
-    }]
-  }]);
+    acl.allow([
+        //1
+        {
+            roles: ['admin'],
+            allows: [
+                {
+                    resources: '/api/cars',
+                    permissions: '*'
+                }, {
+                    resources: '/api/cars/:carId',
+                    permissions: '*'
+                }
+            ]
+        },
+        //2
+        {
+            roles: ['user'],
+            allows: [
+                {
+                    resources: '/api/cars',
+                    permissions: ['get', 'post']
+                }, {
+                    resources: '/api/cars/:carId',
+                    permissions: ['get']
+                }
+            ]
+        },
+        //3
+        {
+            roles: ['guest'],
+            allows: [
+                {
+                    resources: '/api/cars',
+                    permissions: ['get']
+                }, {
+                    resources: '/api/cars/:carId',
+                    permissions: ['get']
+                }
+            ]
+        }
+    ]);
 };
 
 /**
  * Check If Cars Policy Allows
  */
 exports.isAllowed = function (req, res, next) {
-  var roles = (req.user) ? req.user.roles : ['guest'];
+    var roles = (req.user) ? req.user.roles : ['guest'];
 
-  // If an car is being processed and the current user created it then allow any manipulation
-  if (req.car && req.user && req.car.user.id === req.user.id) {
-    return next();
-  }
-
-  // Check for user roles
-  acl.areAnyRolesAllowed(roles, req.route.path, req.method.toLowerCase(), function (err, isAllowed) {
-    if (err) {
-      // An authorization error occurred.
-      return res.status(500).send('Unexpected authorization error');
-    } else {
-      if (isAllowed) {
-        // Access granted! Invoke next middleware
+    // If an car is being processed and the current user created it then allow any manipulation
+    if (req.car && req.user && req.car.user.id === req.user.id) {
         return next();
-      } else {
-        return res.status(403).json({
-          message: 'User is not authorized'
-        });
-      }
     }
-  });
+
+    // Check for user roles
+    //_phlog("req.route.path", req.route.path).next("req.originalUrl", req.originalUrl).next("req.route", JSON.stringify(req.route)).end();
+    acl.areAnyRolesAllowed(roles, req.route.path, req.method.toLowerCase(), function (err, isAllowed) {
+        if (err) {
+            // An authorization error occurred.
+            return res.status(500).send('Unexpected authorization error');
+        } else {
+            if (isAllowed) {
+                // Access granted! Invoke next middleware
+                return next();
+            } else {
+                return res.status(403).json({
+                    message: 'User is not authorized'
+                });
+            }
+        }
+    });
 };

@@ -200,6 +200,7 @@ UserSchema.statics.generateRandomPassphrase = function () {
       // resolve with the validated passphrase
       resolve(password);
     }
+    
   });
 };
 

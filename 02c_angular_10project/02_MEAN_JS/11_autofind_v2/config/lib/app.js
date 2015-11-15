@@ -6,9 +6,8 @@
 var config = require('../config'),
   mongoose = require('./mongoose'),
   express = require('./express'),
-  chalk = require('chalk'),
   seed = require('./seed');
-
+var chalk = require('chalk');
 function seedDB() {
   if (config.seedDB.seed) {
     console.log(chalk.bold.red('Warning:  Database seeding is turned on'));

@@ -1,0 +1,13 @@
+h2{
+	font-size:27px;
+}
+
+.delete-button{
+  color: yellow;
+  background-color: yellow;
+  margin-top: -30px;
+}
+
+#mainWrap{
+	display: none;
+}

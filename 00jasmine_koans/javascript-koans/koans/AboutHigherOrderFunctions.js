@@ -28,7 +28,7 @@ describe("About Higher Order Functions", function () {
     var numbers = [1, 2, 3];
     var reduction = _(numbers).reduce(
             function(/* result from last call */ memo, /* current */ x) { return memo + x }, /* initial */ 0);
-
+	  
     expect(reduction).toBe(FILL_ME_IN);
     expect(numbers).toEqual(FILL_ME_IN);
   });
